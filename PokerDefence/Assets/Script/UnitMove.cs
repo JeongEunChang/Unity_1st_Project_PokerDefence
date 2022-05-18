@@ -7,17 +7,37 @@ public class UnitMove : MonoBehaviour
 {
     public NavMeshAgent nav;
     public GameObject Path;
+    int Path_index = 0;
+    int Last_Path_index = 9;
 
     // Start is called before the first frame update
     void Start()
     {
-        Path = gameObject.transform.Find("Path").gameObject;
-        Path = Path.gameObject.transform.Find("Start").gameObject;
+        Path = GameObject.Find("Path");
+        Path = Path.transform.Find("Start").gameObject;
+        nav = GetComponent<NavMeshAgent>();
+        nav.SetDestination(Path.transform.position);
+        Path = Path.transform.parent.Find("0").gameObject;
+        nav.SetDestination(Path.transform.position);
+        
+        Debug.Log(Path.gameObject.name);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Path_index < Last_Path_index)
+        {
+            Debug.Log((transform.position - Path.transform.position).magnitude);
+            if ((transform.position - Path.transform.position).magnitude < 1.0f)
+            {
+                Path_index += 1;
+                Debug.Log(1000);
+                Path = Path.transform.parent.Find(Path_index.ToString()).gameObject;
+                Debug.Log(Path.gameObject.name);
+                nav.SetDestination(Path.transform.position);
+            }
+            Debug.Log(Path_index);
+        }
     }
 }
