@@ -19,8 +19,6 @@ public class UnitMove : MonoBehaviour
         nav.SetDestination(Path.transform.position);
         Path = Path.transform.parent.Find("0").gameObject;
         nav.SetDestination(Path.transform.position);
-        
-        Debug.Log(Path.gameObject.name);
     }
 
     // Update is called once per frame
@@ -28,16 +26,12 @@ public class UnitMove : MonoBehaviour
     {
         if(Path_index < Last_Path_index)
         {
-            Debug.Log((transform.position - Path.transform.position).magnitude);
             if ((transform.position - Path.transform.position).magnitude < 1.0f)
             {
                 Path_index += 1;
-                Debug.Log(1000);
                 Path = Path.transform.parent.Find(Path_index.ToString()).gameObject;
-                Debug.Log(Path.gameObject.name);
                 nav.SetDestination(Path.transform.position);
             }
-            Debug.Log(Path_index);
         }
     }
 }
