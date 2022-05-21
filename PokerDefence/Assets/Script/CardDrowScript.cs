@@ -10,9 +10,9 @@ public class CardDrowScript: MonoBehaviour
 
     public Transform[] TradeCard;
     public Transform Card;
-    public int[] dumpcard = new int[5] {50, 50, 50, 50, 50}; // 왜 배열 초기화 해줘도, 인스펙터 정보는 갱신되지 않음? 지정해준 값 넘게 넣을 수도 있던데...?
+    private int[] dumpcard = new int[5] {50, 50, 50 ,50 , 50}; // 왜 배열 초기화 해줘도, 인스펙터 정보는 갱신되지 않음? 지정해준 값 넘게 넣을 수도 있던데...?
     int i = 0;
-
+    // staic 으로 배열 선언, private 로 선언하면 초기화 가능, 근데 public으로 선언하면 소스코드 내에서 초기화 불가능
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +34,7 @@ public class CardDrowScript: MonoBehaviour
 
                     if (Drowed == true)
                     {
-                        int randomnumber = Random.Range(0, 36); // 업데이트 함수 내에서 for문쓰면 한번에 발생함,,,?
-
+                        int randomnumber = Random.Range(0, 36);
 
                         if (randomnumber == dumpcard[0] || randomnumber == dumpcard[1] || randomnumber == dumpcard[2] || randomnumber == dumpcard[3] || randomnumber == dumpcard[4])
                         {
@@ -44,15 +43,19 @@ public class CardDrowScript: MonoBehaviour
                                 randomnumber = Random.Range(0, 36);
                             }
                         }
-
                         dumpcard[i] = randomnumber;
                         i++;
                         if(i == 5)
                             i = 0;
 
+
                         Transform Drow = Instantiate(TradeCard[randomnumber]);
                         Drow.position = new Vector3(Card.transform.position.x, 2.5f , Card.transform.position.z); // 포지션 값 받아와서 그 값에 더해줄 수 있는 방법은 없을라나?
                         Drow.rotation = new Quaternion(Card.transform.rotation.x, Card.transform.rotation.y, 180, 0);
+                        //CardComb comb = GameObject.Find("CardDrow").GetComponent<CardComb>();
+                        //comb.PrintCardComb(Drow.GetComponent<CardInfo>().number, Drow.GetComponent<CardInfo>().type);
+                        CardComb.PrintCardComb(Drow.gameObject);
+
                         Destroy(Card.gameObject);
                         //Drowed = false;
                     }
