@@ -5,27 +5,27 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637877042540014468
-    m_Hash: 3841823420
+      ticks: 637888046120302879
+    m_Hash: 2428139203
   m_LockFileStatus:
     m_FilePath: C:/Users/jec99/Documents/GitHub/Unity_1st_Project_PokerDefence/PokerDefence/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637877042616559879
-    m_Hash: 3065126310
+      ticks: 637888046120342895
+    m_Hash: 1460465705
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
-    - packageId: com.unity.collab-proxy@1.15.15
+    - packageId: com.unity.collab-proxy@1.15.17
       testable: 0
       isDirectDependency: 1
-      version: 1.15.15
+      version: 1.15.17
       source: 1
-      resolvedPath: C:\Users\jec99\Documents\GitHub\Unity_1st_Project_PokerDefence\PokerDefence\Library\PackageCache\com.unity.collab-proxy@1.15.15
+      resolvedPath: C:\Users\jec99\Documents\GitHub\Unity_1st_Project_PokerDefence\PokerDefence\Library\PackageCache\com.unity.collab-proxy@1.15.17
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -147,13 +147,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637828649420000000
+      datePublishedTicks: 637871149130000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-        revision: abf10445fb869983dbe4f8f87ec63c58f4cd36e0
+        revision: fd95d00c5a7961beec85ee190181439d53fb0dba
         path: 
     - packageId: com.unity.ide.rider@2.0.7
       testable: 0
