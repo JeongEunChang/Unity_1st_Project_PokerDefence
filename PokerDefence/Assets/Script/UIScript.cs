@@ -42,8 +42,6 @@ public class UIScript : MonoBehaviour
             //GameObject Check = GameObject.Find("CanCreateTower");
             Check.SetActive(true);
             BuildCheck = true;
-            CreateTower.kind = CreateTower.TowerBuildKind.None;
-            CreateTower.SelectLocate = null;
         }
 
         else if (BuildCheck == true)
@@ -64,38 +62,5 @@ public class UIScript : MonoBehaviour
     public void ClickLaserTower()
     {
         CreateTower.kind = CreateTower.TowerBuildKind.Laser;
-    }
-
-    public void ButtonMachineGunTower()
-    {
-        Invoke("ClickMachineGunTower", 0);
-    }
-
-
-    public void ClickMachineGunTower()
-    {
-        CreateTower.kind = CreateTower.TowerBuildKind.MachineGun;
-    }
-
-    public void ButtonRocketTower()
-    {
-        Invoke("ClickRocketTower", 0);
-    }
-
-
-    public void ClickRocketTower()
-    {
-        CreateTower.kind = CreateTower.TowerBuildKind.Rocket;
-    }
-
-    public void ButtonPylonTower()
-    {
-        Invoke("ClickPylonTower", 0);
-    }
-
-
-    public void ClickPylonTower()
-    {
-        CreateTower.kind = CreateTower.TowerBuildKind.Pylon;
     }
 }
