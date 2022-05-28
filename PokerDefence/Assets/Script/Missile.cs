@@ -17,10 +17,14 @@ public class Missile : MonoBehaviour
     {
         if ((transform.position - Aim.transform.position).magnitude < 0.1f)
         {
+            if (Aim == null)
+                Destroy(gameObject);
             Destroy(gameObject);
+            HPScript hp = Aim.GetComponent<HPScript>();
+            hp.DamagedHP(60);
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, Aim.transform.position, 0.01f);
+        transform.position = Vector3.MoveTowards(transform.position, Aim.transform.position, 0.5f);
     }
 
     private void OnTriggerEnter(Collider other)

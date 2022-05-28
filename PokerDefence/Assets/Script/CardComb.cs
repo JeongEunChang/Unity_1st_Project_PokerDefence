@@ -25,72 +25,83 @@ public class CardComb : MonoBehaviour
             if (CheckRoyalStraightFlush() == true)
             {
                 print("RoyalStraightFlush!!!");
+                ResourceScript.PlusMoney(10000);
                 return;
             }
 
             else if (CheckStraightFlush() == true)
             {
                 print("StraightFlush!!!");
+                ResourceScript.PlusMoney(5000);
                 return;
             }
 
-            else if (CheckFive() == true)
-            {
-                print("FiveCard!!!");
-                return;
-            }
+            //else if (CheckFive() == true)
+            //{
+            //    print("FiveCard!!!");
+            //    return;
+            //}
 
             else if (CheckFour() == true)
             {
                 print("FourCard!!!");
+                ResourceScript.PlusMoney(1500);
                 return;
             }
 
             else if (CheckRoyalStraight() == true)
             {
                 print("RoyalStraight!!!");
+                ResourceScript.PlusMoney(1200);
                 return;
             }
 
             else if (CheckFullHouse() == true)
             {
                 print("FullHouse!!!");
+                ResourceScript.PlusMoney(800);
                 return;
             }
 
             else if (CheckFlush() == true)
             {
                 print("Flush!!!");
+                ResourceScript.PlusMoney(700);
                 return;
             }
 
             else if (CheckStraight() == true)
             {
                 print("Straight!!!");
+                ResourceScript.PlusMoney(500);
                 return;
             }
 
             else if (CheckThree() == true)
             {
                 print("ThreeCard!!!");
+                ResourceScript.PlusMoney(350);
                 return;
             }
 
             else if (CheckTwoPair() == true)
             {
                 print("TwoPair!!!");
+                ResourceScript.PlusMoney(180);
                 return;
             }
 
             else if (CheckOnePair() == true)
             {
                 print("OnePair!!!");
+                ResourceScript.PlusMoney(100);
                 return;
             }
 
             else if (checkTop() == true)
             {
                 print("Top!!!");
+                ResourceScript.PlusMoney(80);
                 return;
             }
         }        

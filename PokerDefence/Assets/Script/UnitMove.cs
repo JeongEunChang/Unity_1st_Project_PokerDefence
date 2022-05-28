@@ -33,5 +33,15 @@ public class UnitMove : MonoBehaviour
                 nav.SetDestination(Path.transform.position);
             }
         }
+
+        else if (Path_index == Last_Path_index)
+        {
+            if ((transform.position - Path.transform.position).magnitude < 1.0f)
+            {
+                Destroy(gameObject);
+                Regen.DiedMonster++;
+                UserLife.DecreaseLife(1);
+            }
+        }
     }
 }

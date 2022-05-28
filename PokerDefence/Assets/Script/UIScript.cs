@@ -19,17 +19,6 @@ public class UIScript : MonoBehaviour
         
     }
 
-    public void ButtonNextStage()
-    {
-        Invoke("ClickNextStage", 3);
-    }
-
-    public void ClickNextStage()
-    {
-        // 다음 스테이지로 넘어가기
-    }
-
-
     public void ButtonBuildTower()
     {
         Invoke("ClickBuildTower", 0);
@@ -37,22 +26,32 @@ public class UIScript : MonoBehaviour
 
     public void ClickBuildTower()
     {
-        if (BuildCheck == false)
+        if (Regen.StageComplate == true)
         {
-            //GameObject Check = GameObject.Find("CanCreateTower");
-            Check.SetActive(true);
-            BuildCheck = true;
-            CreateTower.kind = CreateTower.TowerBuildKind.None;
-            CreateTower.SelectLocate = null;
-        }
+            if (CardDrowScript.CanCardDrow == false)
+            {
+                GameObject.Find("Main Camera").transform.position = new Vector3(5.08f, 41.3f, 10.5f);
 
-        else if (BuildCheck == true)
-        {
-            //GameObject Check = GameObject.Find("CanCreateTower");
-            Check.SetActive(false); ;
-            BuildCheck = false;
-        }
+                if (BuildCheck == false)
+                {
+                    //GameObject Check = GameObject.Find("CanCreateTower");
+                    Check.SetActive(true);
+                    BuildCheck = true;
+                    CreateTower.kind = CreateTower.TowerBuildKind.None;
+                    CreateTower.SelectLocate = null;
+                }
 
+                else if (BuildCheck == true)
+                {
+                    //GameObject Check = GameObject.Find("CanCreateTower");
+                    Check.SetActive(false); ;
+                    BuildCheck = false;
+                }
+            }
+
+            else if (CardDrowScript.CanCardDrow == true)
+                print("카드를 모두 뽑아주세요");
+        }
     }
 
     public void ButtonLaserTower()

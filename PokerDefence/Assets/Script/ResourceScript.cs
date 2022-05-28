@@ -36,6 +36,6 @@ public class ResourceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoneyText.text = "Resource : " + Money.ToString();
+        MoneyText.text = "Money : " + Money.ToString();
     }
 }

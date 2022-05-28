@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class HPScript : MonoBehaviour
 {
-    public int HP = 100;
+    public int HP;
 
 
     // Start is called before the first frame update
-    
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
+            Regen.DiedMonster++;
+        }
+    }
+
     public int GetHP()
     {
         return HP;
