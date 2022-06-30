@@ -5,14 +5,14 @@ using UnityEngine;
 public class HPScript : MonoBehaviour
 {
     public int HP;
-    public ParticleSystem LaserParticle;
+    //public ParticleSystem LaserParticle;
     public int count = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        LaserParticle = GameObject.Find("Desktop").GetComponent<ParticleSystem>();
+        //LaserParticle = GameObject.Find("Desktop").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,6 @@ public class HPScript : MonoBehaviour
         HPScript hp = gameObject.GetComponent<HPScript>();
         hp.DamagedHP(60);
         count++;
-        LaserParticle.Stop();
     }
 
     public int GetHP()

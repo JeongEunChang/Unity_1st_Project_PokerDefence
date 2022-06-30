@@ -28,7 +28,7 @@ public class Regen : MonoBehaviour
 
     public void ButtonNextStage()
     {
-        if (CardDrowScript.CanCardDrow == false)
+        if (CardDrowScript.CanCardDrow == false && UIScript.BuildCheck == false)
         {
             GameObject.Find("Main Camera").transform.position = new Vector3(5.08f, 41.3f, 10.5f);
             StageComplate = false;

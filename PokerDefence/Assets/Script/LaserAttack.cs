@@ -10,6 +10,7 @@ public class LaserAttack : MonoBehaviour
     public GameObject obj; // 레이저 프리펩을 받아오는 오브젝트 변수
     public GameObject Fire;
     public GameObject tmp;
+    public GameObject LaserHead;
     public ParticleSystem LaserParticle;
     public bool Delay = false;
     float timer = 0f;
@@ -17,9 +18,9 @@ public class LaserAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LaserParticle = GameObject.Find("Desktop").GetComponent<ParticleSystem>();
+        LaserParticle = gameObject.transform.Find("LaserTower_TURRET_L01").transform.Find("LaserFireEffect").transform.Find("Desktop").GetComponent<ParticleSystem>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -50,20 +51,19 @@ public class LaserAttack : MonoBehaviour
         {
             if (NowEnemy == null)
             {
-                Debug.Log(LaserParticle.time);
                 NowEnemy = other.gameObject;
+
+                LaserHead = transform.Find("LaserTower_TURRET_L01").gameObject;
+                Vector3 EnemyPosition = NowEnemy.transform.position;
+                //LaserHead.transform.rotation = Quaternion.LookRotation(EnemyPosition);
+                LaserHead.transform.LookAt(EnemyPosition);
+
                 LaserParticle.Play();
-                //LaserParticle.Stop();
-                //LaserParticle.Stop();
-                Debug.Log(LaserParticle.time);
                 //Hit = Instantiate(obj);
-                //Debug.Log("0");
-                //Debug.Log("1");
                 //Hit.transform.position = Fire.transform.position;
-                //Debug.Log("2");
-                //Debug.Log(Fire);
                 //Hit.transform.rotation = new Quaternion(Fire.transform.rotation.x, Fire.transform.rotation.y, 180, 0);
                 //Hit.GetComponent<Missile>().Aim = NowEnemy;
+
             }
 
             else if (NowEnemy != null)
@@ -77,11 +77,16 @@ public class LaserAttack : MonoBehaviour
                     NowEnemy = other.gameObject;
                 }
 
+                LaserHead = transform.Find("LaserTower_TURRET_L01").gameObject;
+                Vector3 EnemyPosition = NowEnemy.transform.position;
+                //LaserHead.transform.rotation = Quaternion.LookRotation(EnemyPosition);
+                LaserHead.transform.LookAt(EnemyPosition);
+
                 LaserParticle.Play();
-                //LaserParticle.Stop();
                 //Hit = Instantiate(obj);
                 //Hit.transform.position = Fire.transform.position;
                 //Hit.GetComponent<Missile>().Aim = NowEnemy;
+
             }
 
             Delay = true;
