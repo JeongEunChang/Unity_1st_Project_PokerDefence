@@ -8460,7 +8460,7 @@ MonoBehaviour:
   Tower: {fileID: 0}
   TowerHouse:
   - {fileID: 8697491148652411660, guid: 77eb07d0b0646724fa43ce84fa520490, type: 3}
-  - {fileID: 1401014823036408, guid: 639c49a7820a549c5822f7b768abc5ac, type: 3}
+  - {fileID: 6683640575786822529, guid: f9284ab574a021d49b4b237d1d9bd816, type: 3}
   - {fileID: 1361402013487122, guid: afd8cfe3809484aac81a3f4f39b80ca5, type: 3}
   - {fileID: 1330679506175634, guid: ae2c948b2373c4a01bf645a32b1ed505, type: 3}
 --- !u!4 &2048028094

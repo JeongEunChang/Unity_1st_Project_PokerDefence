@@ -1,31 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class MachineGunAttack : MonoBehaviour
+public class MachineGunAttack : TowerAttack
 {
-    public static GameObject Aim;
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        AttackParticle = gameObject.transform.Find("Turret_MachineGun_L01").transform.Find("MachineGunLvl1Effect").transform.Find("Desktop").GetComponent<ParticleSystem>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if ((transform.position - Aim.transform.position).magnitude < 0.1f)
+        if (Delay == true)
         {
-            Destroy(gameObject);
+            timer += Time.deltaTime;
+
+            if (timer > 1.0f)
+            {
+                timer = 0f;
+                Delay = false;
+            }
         }
-
-        transform.position = Vector3.MoveTowards(transform.position, Aim.transform.position, 0.1f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other) // 공격범위로 들어오는 적을 인식해서, 가장 가까운 적으로 타겟으로 변경
     {
-        
-    }
+        HPScript hp = other.GetComponent<HPScript>();
 
+        if (!Delay && hp.IsDied == false)
+        {
+            if (NowEnemy == null)
+            {
+                NowEnemy = other.gameObject;
+
+                TowerHead = transform.Find("Turret_MachineGun_L01").gameObject;
+                Vector3 EnemyPosition = NowEnemy.transform.position;
+                TowerHead.transform.LookAt(EnemyPosition);
+
+                AttackParticle.Play();
+            }
+
+            else if (NowEnemy != null)
+            {
+                Debug.Log("카운팅");
+                float Now = (NowEnemy.transform.position - gameObject.transform.position).magnitude;
+                float New = (other.transform.position - gameObject.transform.position).magnitude;
+
+                if (New < Now)
+                {
+                    NowEnemy = other.gameObject;
+                }
+
+                TowerHead = transform.Find("Turret_MachineGun_L01").gameObject;
+                Vector3 EnemyPosition = NowEnemy.transform.position;
+                TowerHead.transform.LookAt(EnemyPosition);
+
+                AttackParticle.Play();
+
+            }
+
+            Delay = true;
+        }
+    }
 }
