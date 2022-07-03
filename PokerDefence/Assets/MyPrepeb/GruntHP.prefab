@@ -386,6 +386,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  count: 0
+  hit: {fileID: 0}
+  MachineGun: {fileID: 198278080792148898, guid: a4e0e87699dbd400aaf85d616d2618f8,
+    type: 3}
+  HitPoint: {x: 0, y: 0, z: 0}
+  NowParticle: {fileID: 0}
+  monster: {fileID: 0}
+  IsDied: 0
 --- !u!1 &4303668401545508407
 GameObject:
   m_ObjectHideFlags: 0
