@@ -50,7 +50,7 @@ public class HPScript : MonoBehaviour
         hp.DamagedHP(60);
         monster.SetInteger("HP", HP);
 
-        if (monster.GetInteger("HP") <= 0)
+        if (monster.GetInteger("HP") <= 0)// 죽은 상태에서는 다시 대상이 되지 않도록 조정하기
         {
             IsDied = true;
             NavMeshAgent nav = GetComponent<NavMeshAgent>();
