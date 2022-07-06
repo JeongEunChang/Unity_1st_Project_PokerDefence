@@ -6,6 +6,7 @@ public class UIScript : MonoBehaviour
 {
     public static bool BuildCheck = false;
     public GameObject Check;
+    int count = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,11 @@ public class UIScript : MonoBehaviour
         {
             if (CardDrowScript.CanCardDrow == false)
             {
-                GameObject.Find("Main Camera").transform.position = new Vector3(5.08f, 41.3f, 10.5f);
+                if (count == 1)
+                {
+                    GameObject.Find("Main Camera").transform.position = new Vector3(12.44f, 20.56f, 23.51f);
+                    count++;
+                }
 
                 if (BuildCheck == false)
                 {

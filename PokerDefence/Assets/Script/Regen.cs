@@ -30,7 +30,7 @@ public class Regen : MonoBehaviour
     {
         if (CardDrowScript.CanCardDrow == false && UIScript.BuildCheck == false)
         {
-            GameObject.Find("Main Camera").transform.position = new Vector3(5.08f, 41.3f, 10.5f);
+            GameObject.Find("Main Camera").transform.position = new Vector3(12.44f, 20.56f, 23.51f);
             StageComplate = false;
             InvokeRepeating("ClickNextStage", 1.5f, StageSet.RegenTime);
             InvokeRepeating("CheckEndStage", 0, 0.001f);
