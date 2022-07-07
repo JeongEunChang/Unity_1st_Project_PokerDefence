@@ -7,6 +7,7 @@ public class StageInspector : MonoBehaviour
     public float RegenTime;
     public int[] RegenMonster;
     public int MaxRegen;
+    public int HPIncrease;
 
 
     // Start is called before the first frame update

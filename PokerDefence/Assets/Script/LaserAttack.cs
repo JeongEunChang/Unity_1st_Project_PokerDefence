@@ -71,7 +71,6 @@ public class LaserAttack : TowerAttack
 
             else if (NowEnemy != null) // 계산 도중 적이 제거 됐을 때 경우의 수 처리해 놓기
             {
-                Debug.Log("카운팅");
                 float Now = (NowEnemy.transform.position - gameObject.transform.position).magnitude;
                 float New = (other.transform.position - gameObject.transform.position).magnitude;
 

@@ -10,6 +10,7 @@ public class Regen : MonoBehaviour
     public int StageCount = 0;
     public int MonsterCount = 0;
     public int index = 0;
+    int LastStage = 10;
     public static int DiedMonster = 0;
     public static bool StageComplate = true;
 
@@ -33,7 +34,7 @@ public class Regen : MonoBehaviour
             GameObject.Find("Main Camera").transform.position = new Vector3(12.44f, 20.56f, 23.51f);
             StageComplate = false;
             InvokeRepeating("ClickNextStage", 1.5f, StageSet.RegenTime);
-            InvokeRepeating("CheckEndStage", 0, 0.001f);
+            InvokeRepeating("CheckEndStage", 0, 0.0001f);
         }
 
         else if (CardDrowScript.CanCardDrow == true)
@@ -51,7 +52,10 @@ public class Regen : MonoBehaviour
             print("스테이지 종료");
             DiedMonster = 0;
             StageSet = Stage[StageCount].GetComponent<StageInspector>();
-            StageCount++;
+            if (StageCount != 10)
+            {
+                StageCount++;
+            }
             MonsterCount = 0;
             StageComplate = true;
         }
@@ -62,6 +66,8 @@ public class Regen : MonoBehaviour
         if (MonsterCount < StageSet.MaxRegen)
         {
             GameObject tmp = Instantiate(Monster[StageSet.RegenMonster[index]]);
+            HPScript hpupgrade =  tmp.GetComponent<HPScript>();
+            hpupgrade.SetHP(hpupgrade.HP + StageSet.HPIncrease);
             tmp.transform.position = GameObject.Find("Start").transform.position;
             MonsterCount++;
             index++;

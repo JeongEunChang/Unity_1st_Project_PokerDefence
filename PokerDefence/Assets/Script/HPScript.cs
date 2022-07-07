@@ -21,6 +21,7 @@ public class HPScript : MonoBehaviour
         monster = GetComponent<Animator>();
         //NowParticle = Instantiate(MachineGun);
         //LaserParticle = GameObject.Find("Desktop").GetComponent<ParticleSystem>();
+        //StartCoroutine(CountDied());
     }
 
     // Update is called once per frame
@@ -60,9 +61,29 @@ public class HPScript : MonoBehaviour
         count++;
     }
 
+    IEnumerator CountDied()
+    {
+        while (true)
+        {
+            if ( HP <= 0 )
+            {
+                Regen.DiedMonster++;
+                Debug.Log("died");
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
     public int GetHP()
     {
         return HP;
+    }
+
+    public void SetHP(int data)
+    {
+        HP = data;
     }
 
     public void DamagedHP(int Damage)
