@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class LaserAttack : TowerAttack
 {
-    public GameObject test;
+    public AudioClip audioClip;
+    public AudioSource audioSource;
     //public GameObject NowEnemy = null;
     //public GameObject Hit; // 생성한 레이저 오브젝트를 담아두는 오브젝트 변수
     //public GameObject obj; // 레이저 프리펩을 받아오는 오브젝트 변수
@@ -20,6 +21,7 @@ public class LaserAttack : TowerAttack
     void Start()
     {
         AttackParticle = gameObject.transform.Find("LaserTower_TURRET_L01").transform.Find("LaserFireEffect").transform.Find("Desktop").GetComponent<ParticleSystem>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     
     // Update is called once per frame
@@ -56,17 +58,21 @@ public class LaserAttack : TowerAttack
             {
                 NowEnemy = other.gameObject;
 
-                TowerHead = transform.Find("LaserTower_TURRET_L01").gameObject;
-                Vector3 EnemyPosition = NowEnemy.transform.position;
-                //LaserHead.transform.rotation = Quaternion.LookRotation(EnemyPosition);
-                TowerHead.transform.LookAt(EnemyPosition);
+                if (NowEnemy.GetComponent<HPScript>().IsDied != true)
+                {
+                    TowerHead = transform.Find("LaserTower_TURRET_L01").gameObject;
+                    Vector3 EnemyPosition = NowEnemy.transform.position;
+                    //LaserHead.transform.rotation = Quaternion.LookRotation(EnemyPosition);
+                    TowerHead.transform.LookAt(EnemyPosition);
 
-                AttackParticle.Play();
-                //Hit = Instantiate(obj);
-                //Hit.transform.position = Fire.transform.position;
-                //Hit.transform.rotation = new Quaternion(Fire.transform.rotation.x, Fire.transform.rotation.y, 180, 0);
-                //Hit.GetComponent<Missile>().Aim = NowEnemy;
-
+                    AttackParticle.Play();
+                    //audioSource.PlayOneShot(audioClip);
+                    audioSource.Play();
+                    //Hit = Instantiate(obj);
+                    //Hit.transform.position = Fire.transform.position;
+                    //Hit.transform.rotation = new Quaternion(Fire.transform.rotation.x, Fire.transform.rotation.y, 180, 0);
+                    //Hit.GetComponent<Missile>().Aim = NowEnemy;
+                }
             }
 
             else if (NowEnemy != null) // 계산 도중 적이 제거 됐을 때 경우의 수 처리해 놓기
@@ -84,16 +90,19 @@ public class LaserAttack : TowerAttack
                     NowEnemy = other.gameObject;
                 }
 
-                TowerHead = transform.Find("LaserTower_TURRET_L01").gameObject;
-                Vector3 EnemyPosition = NowEnemy.transform.position;
-                //LaserHead.transform.rotation = Quaternion.LookRotation(EnemyPosition);
-                TowerHead.transform.LookAt(EnemyPosition);
+                if (NowEnemy.GetComponent<HPScript>().IsDied != true)
+                {
+                    TowerHead = transform.Find("LaserTower_TURRET_L01").gameObject;
+                    Vector3 EnemyPosition = NowEnemy.transform.position;
+                    //LaserHead.transform.rotation = Quaternion.LookRotation(EnemyPosition);
+                    TowerHead.transform.LookAt(EnemyPosition);
 
-                AttackParticle.Play();
-                //Hit = Instantiate(obj);
-                //Hit.transform.position = Fire.transform.position;
-                //Hit.GetComponent<Missile>().Aim = NowEnemy;
-
+                    AttackParticle.Play();
+                    audioSource.Play();
+                    //Hit = Instantiate(obj);
+                    //Hit.transform.position = Fire.transform.position;
+                    //Hit.GetComponent<Missile>().Aim = NowEnemy;
+                }
             }
 
             Delay = true;

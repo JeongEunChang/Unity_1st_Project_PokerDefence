@@ -6,7 +6,7 @@ public class UIScript : MonoBehaviour
 {
     public static bool BuildCheck = false;
     public GameObject Check;
-    int count = 1;
+    public static int count = 1;
 
     // Start is called before the first frame update
     void Start()

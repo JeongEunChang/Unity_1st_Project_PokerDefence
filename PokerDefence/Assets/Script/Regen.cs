@@ -10,7 +10,6 @@ public class Regen : MonoBehaviour
     public int StageCount = 0;
     public int MonsterCount = 0;
     public int index = 0;
-    int LastStage = 10;
     public static int DiedMonster = 0;
     public static bool StageComplate = true;
 
@@ -35,6 +34,7 @@ public class Regen : MonoBehaviour
             StageComplate = false;
             InvokeRepeating("ClickNextStage", 1.5f, StageSet.RegenTime);
             InvokeRepeating("CheckEndStage", 0, 0.0001f);
+            UIScript.count = 1;
         }
 
         else if (CardDrowScript.CanCardDrow == true)

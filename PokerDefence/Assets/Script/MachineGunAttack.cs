@@ -5,9 +5,12 @@ using UnityEngine.AI;
 
 public class MachineGunAttack : TowerAttack
 {
+    public AudioClip audioClip;
+    public AudioSource audioSource;
     void Start()
     {
         AttackParticle = gameObject.transform.Find("Turret_MachineGun_L01").transform.Find("MachineGunLvl1Effect").transform.Find("Desktop").GetComponent<ParticleSystem>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -16,7 +19,7 @@ public class MachineGunAttack : TowerAttack
         {
             timer += Time.deltaTime;
 
-            if (timer > 1.0f)
+            if (timer > 0.1f)
             {
                 timer = 0f;
                 Delay = false;
@@ -34,11 +37,15 @@ public class MachineGunAttack : TowerAttack
             {
                 NowEnemy = other.gameObject;
 
-                TowerHead = transform.Find("Turret_MachineGun_L01").gameObject;
-                Vector3 EnemyPosition = NowEnemy.transform.position;
-                TowerHead.transform.LookAt(EnemyPosition);
+                if (NowEnemy.GetComponent<HPScript>().IsDied != true)
+                {
+                    TowerHead = transform.Find("Turret_MachineGun_L01").gameObject;
+                    Vector3 EnemyPosition = NowEnemy.transform.position;
+                    TowerHead.transform.LookAt(EnemyPosition);
 
-                AttackParticle.Play();
+                    AttackParticle.Play();
+                    audioSource.Play();
+                }
             }
 
             else if (NowEnemy != null)
@@ -52,12 +59,20 @@ public class MachineGunAttack : TowerAttack
                     NowEnemy = other.gameObject;
                 }
 
-                TowerHead = transform.Find("Turret_MachineGun_L01").gameObject;
-                Vector3 EnemyPosition = NowEnemy.transform.position;
-                TowerHead.transform.LookAt(EnemyPosition);
+                else if (NowEnemy.GetComponent<HPScript>().IsDied == true)
+                {
+                    NowEnemy = other.gameObject;
+                }
 
-                AttackParticle.Play();
-
+                if (NowEnemy.GetComponent<HPScript>().IsDied != true)
+                {
+                    TowerHead = transform.Find("Turret_MachineGun_L01").gameObject;
+                    Vector3 EnemyPosition = NowEnemy.transform.position;
+                    TowerHead.transform.LookAt(EnemyPosition);
+                    
+                    AttackParticle.Play();
+                    audioSource.Play();
+                }
             }
 
             Delay = true;

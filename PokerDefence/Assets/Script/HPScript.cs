@@ -48,7 +48,17 @@ public class HPScript : MonoBehaviour
         //hit = other;
         //if (LaserParticle.isPlaying) LaserParticle.Stop();
         HPScript hp = gameObject.GetComponent<HPScript>();
-        hp.DamagedHP(60);
+        Debug.Log(other);
+        if (other.name == "Laser")
+        {
+            hp.DamagedHP(60);
+        }
+
+        else if (other.name == "Tracer")
+        {
+            hp.DamagedHP(5);
+        }
+        //hp.DamagedHP(60);
         monster.SetInteger("HP", HP);
 
         if (monster.GetInteger("HP") <= 0)// 죽은 상태에서는 다시 대상이 되지 않도록 조정하기
