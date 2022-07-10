@@ -20,6 +20,16 @@ public class UIScript : MonoBehaviour
         
     }
 
+    public void Button_X()
+    {
+        Invoke("Click_X_Button", 0);
+    }
+
+    public void Click_X_Button()
+    {
+        GameObject.Find("CardCombPrint").SetActive(false);
+    }
+
     public void ButtonBuildTower()
     {
         Invoke("ClickBuildTower", 0);

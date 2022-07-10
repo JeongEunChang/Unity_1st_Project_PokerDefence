@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class CardDrowScript: MonoBehaviour
 {
+    public UnityEngine.UI.Text CardText;
+    public GameObject CardPrint;
+
     public static bool CanCardDrow = true; // 스테이지 완료하면 true로 바꿀 것, 스테이지 끝나면 Drowed 도 전부 true로 바꿀 것
     public bool Drowed = true; // ccd가 true로 바뀌면 drowed 도 true로 바뀌고, 
 
@@ -19,7 +22,7 @@ public class CardDrowScript: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CardText = CardPrint.gameObject.transform.Find("CardCombResult").GetComponent<UnityEngine.UI.Text>();
     }
 
     // Update is called once per frame
@@ -66,6 +69,8 @@ public class CardDrowScript: MonoBehaviour
 
                             if (EndCardCount == 5)
                             {
+                                CardPrint.SetActive(true);
+                                CardText.text = CardComb.CardResult;
                                 i = 0;
                                 EndCardCount = 0;
                                 CanCardDrow = false;

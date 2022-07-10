@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CardComb : MonoBehaviour
 {
+    static public string CardResult = null;
     static int[] CardNumber = new int[5];
     static string[] CardType = new string[5];
 
@@ -24,14 +25,16 @@ public class CardComb : MonoBehaviour
 
             if (CheckRoyalStraightFlush() == true)
             {
-                print("RoyalStraightFlush!!!");
+                CardResult = "RoyalStraightFlush!!!";
+                //print("RoyalStraightFlush!!!");
                 ResourceScript.PlusMoney(10000);
                 return;
             }
 
             else if (CheckStraightFlush() == true)
             {
-                print("StraightFlush!!!");
+                CardResult = "StraightFlush!!!";
+                //print("StraightFlush!!!");
                 ResourceScript.PlusMoney(5000);
                 return;
             }
@@ -44,63 +47,72 @@ public class CardComb : MonoBehaviour
 
             else if (CheckFour() == true)
             {
-                print("FourCard!!!");
+                CardResult = "FourCard!!!";
+                //print("FourCard!!!");
                 ResourceScript.PlusMoney(1500);
                 return;
             }
 
             else if (CheckRoyalStraight() == true)
             {
-                print("RoyalStraight!!!");
+                CardResult = "RoyalStraight!!!";
+                //print("RoyalStraight!!!");
                 ResourceScript.PlusMoney(1200);
                 return;
             }
 
             else if (CheckFullHouse() == true)
             {
-                print("FullHouse!!!");
+                CardResult = "FullHouse!!!";
+                //print("FullHouse!!!");
                 ResourceScript.PlusMoney(800);
                 return;
             }
 
             else if (CheckFlush() == true)
             {
-                print("Flush!!!");
+                CardResult = "Flush!!!";
+                //print("Flush!!!");
                 ResourceScript.PlusMoney(700);
                 return;
             }
 
             else if (CheckStraight() == true)
             {
-                print("Straight!!!");
+                CardResult = "Straight!!!";
+                //print("Straight!!!");
                 ResourceScript.PlusMoney(500);
                 return;
             }
 
             else if (CheckThree() == true)
             {
-                print("ThreeCard!!!");
+                CardResult = "RThreeCard!!!";
+                //print("ThreeCard!!!");
                 ResourceScript.PlusMoney(350);
                 return;
             }
 
             else if (CheckTwoPair() == true)
             {
-                print("TwoPair!!!");
+                CardResult = "TwoPair!!!";
+                //print("TwoPair!!!");
                 ResourceScript.PlusMoney(180);
                 return;
             }
 
             else if (CheckOnePair() == true)
             {
-                print("OnePair!!!");
+                CardResult = "OnePair!!!";
+                //print("OnePair!!!");
                 ResourceScript.PlusMoney(100);
                 return;
             }
 
             else if (checkTop() == true)
             {
-                print("Top!!!");
+                CardResult = "Top!!!";
+                //print("Top!!!");
                 ResourceScript.PlusMoney(80);
                 return;
             }
