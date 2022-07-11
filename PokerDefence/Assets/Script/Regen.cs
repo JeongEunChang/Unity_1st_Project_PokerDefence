@@ -58,6 +58,7 @@ public class Regen : MonoBehaviour
             }
             MonsterCount = 0;
             StageComplate = true;
+            CameraMove.CanMoveCamera = false;
         }
     }
 

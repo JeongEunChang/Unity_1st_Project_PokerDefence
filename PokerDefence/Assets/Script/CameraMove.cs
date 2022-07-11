@@ -6,52 +6,69 @@ public class CameraMove : MonoBehaviour
 {
     GameObject camera1;
     public Vector3 tmpPosition;
+    bool SpaceCamera = false;
+    public static bool CanMoveCamera = false;
     // Start is called before the first frame update
     void Start()
     {
         camera1 = GameObject.Find("Main Camera");
+        tmpPosition = new Vector3(12.44f, 20.56f, 23.51f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CardDrowScript.CanCardDrow == false || Regen.StageComplate == false)
+        if (CanMoveCamera)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (SpaceCamera == false)
             {
-                camera1.transform.position -= new Vector3(5f, 0, 0) * Time.deltaTime;
-                RemeberPositon();
-            }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    if (!(Input.GetKey(KeyCode.Space)))
+                    {
+                        camera1.transform.position -= new Vector3(5f, 0, 0) * Time.deltaTime;
+                        RemeberPositon();
+                    }
+                }
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                //camera1.transform.position+= transform.forward * Time.deltaTime;
-                camera1.transform.position -= new Vector3(0, 0, -5f) * Time.deltaTime;
-                RemeberPositon();
-            }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    if (!(Input.GetKey(KeyCode.Space)))
+                    {
+                        camera1.transform.position -= new Vector3(0, 0, -5f) * Time.deltaTime;
+                        RemeberPositon();
+                    }
+                }
 
-            if (Input.GetKey(KeyCode.S))
-            {
-                //camera1.transform.position -= transform.forward * Time.deltaTime;
-                camera1.transform.position -= new Vector3(0, 0, 5f) * Time.deltaTime;
-                RemeberPositon();
-            }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    if (!(Input.GetKey(KeyCode.Space)))
+                    {
+                        camera1.transform.position -= new Vector3(0, 0, 5f) * Time.deltaTime;
+                        RemeberPositon();
+                    }
+                }
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                //camera1.transform.position += transform.right * Time.deltaTime;
-                camera1.transform.position -= new Vector3(-5f, 0, 0) * Time.deltaTime;
-                RemeberPositon();
+                if (Input.GetKey(KeyCode.D))
+                {
+                    if (!(Input.GetKey(KeyCode.Space)))
+                    {
+                        camera1.transform.position -= new Vector3(-5f, 0, 0) * Time.deltaTime;
+                        RemeberPositon();
+                    }
+                }
             }
 
             if (Input.GetKey(KeyCode.Space))
             {
                 camera1.transform.position = new Vector3(5.08f, 41.3f, 10.5f);
+                SpaceCamera = true;
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 camera1.transform.position = tmpPosition;
+                SpaceCamera = false;
             }
         }
     }

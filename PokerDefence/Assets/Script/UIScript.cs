@@ -44,6 +44,7 @@ public class UIScript : MonoBehaviour
                 if (count == 1)
                 {
                     GameObject.Find("Main Camera").transform.position = new Vector3(12.44f, 20.56f, 23.51f);
+                    CameraMove.CanMoveCamera = true;
                     count++;
                 }
 
